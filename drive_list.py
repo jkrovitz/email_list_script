@@ -13,6 +13,6 @@ if not creds or creds.invalid:
     creds = tools.run_flow(flow, store)
 DRIVE = discovery.build('drive', 'v3', http=creds.authorize(Http()))
 
-files = DRIVE.files().list(pageSize=1000).execute().get('files', [])
+files = DRIVE.files().list(pageSize=10000).execute().get('files', [])
 for f in files:
     print(f['name'], f['mimeType'])
